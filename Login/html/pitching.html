@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style/index.css">
+    <link rel="spreadsheet" type="text" href="/csv/pitching.csv">
+</head>
+<body>
+    <section>
+        <header class="data">
+            <a href="pitching.html">Log In</a>
+            <div>
+                <img src="../images/ncaa.jpg" height="150" width="150" alt="image">
+                <img src="../images/al.gif" height="150" width="150" alt="image">
+                <img src="../images/mlb.jpg" height="150" width="150" alt="image">
+                <img src="../images/nl.gif" height="150" width="150" alt="image">
+                <img src="../images/frontier league.jpg" height="150" width="150" alt="image">
+                <img src="../images/Highschool.jpg" height="150" width="150" alt="image">
+            </div>
+            <h2><a href="index.html">Home Page</a></h2>
+        </header>
+            <div>
+                <nav id="hamnav">
+                    <div id="hamitems">
+                        <div class="aaa">
+                            <h3>Pitching Form</h3>
+                            <form id="baseballForm">
+                                <table>
+                                    <tr>
+                                        <th><label for="name">Name:</label></th>
+                                        <td><input type="text" id="name" name="name" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th><label for="team">Team:</label></th>
+                                        <td><input type="text" id="team" name="team" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th><label for="hits">Hits:</label></th>
+                                        <td><input type="number" id="hits" name="hits" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th><label for="balls">Balls:</label></th>
+                                        <td><input type="number" id="balls" name="balls" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th><label for="inningsPitched">Innings Pitched:</label></th>
+                                        <td><input type="number" id="inningsPitched" name="inningsPitched" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center;">
+                                            <button type="submit">Submit</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; &trade; 2024 A Hollrah Production</p>
+        </footer>
+        <script src="/script/pitching.js"></script>
+        <script src="/script/index.js"></script>
+    </body>
+</html>

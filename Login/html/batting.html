@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style/index.css">
+    <link rel="spreadsheet" type="text" href="/csv/batting.csv">
+</head>
+<body>
+    <section>
+        <header class="data">
+            <a href="index.html"></a>
+            <h2>Baseball Data Collection</h2>
+            <div>
+                <img src="../images/ncaa.jpg" height="150" width="150" alt="image">
+                <img src="../images/al.gif" height="150" width="150" alt="image">
+                <img src="../images/mlb.jpg" height="150" width="150" alt="image">
+                <img src="../images/nl.gif" height="150" width="150" alt="image">
+                <img src="../images/frontier league.jpg" height="150" width="150" alt="image">
+                <img src="../images/Highschool.jpg" height="150" width="150" alt="image">
+            </div>
+            <h2><a href="/index.html">Home Page</a></h2>
+        </header>
+        <section>
+            <div>
+                <nav id="hamnav">
+                    <div id="hamitems">
+                        <div class="aaa">
+                            <h3>Batting Form</h3>
+                            <form id="baseballForm">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="date">
+                                                <label for="date">Date:</label> 
+                                                <input type="text" id="date" name="date" required>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="name">
+                                                <label for="name">Name:</label> 
+                                                <input type="text" id="name" name="name" required> 
+                                            </div>
+                                        </td>
+                                    </tr> <!---
+                                    <tr>
+                                        <td>
+                                            <div class="team">
+                                                <label for="team">Team:</label> 
+                                                <input type="text" id="team" name="team" required>
+                                            </div>
+                                        </td>
+                                    </tr> -->
+                                    <tr>
+                                        <td>
+                                            <div class="hitOut">
+                                                <form id="batting-form">
+                                                    <label>
+                                                        <input type="checkbox" name="hit"> Hit
+                                                    </label><br>
+                                                    <label>
+                                                        <input type="checkbox" name="walk"> Walk
+                                                    </label><br>
+                                                    <label>
+                                                        <input type="checkbox" name="plain-old-out"> Plain-Old Out (Strikeout, Groundout, Flyout, Popout)
+                                                    </label><br>
+                                                    <label>
+                                                        <input type="checkbox" name="sacraficebunt"> Sacrafice Bunt
+                                                    </label><br>
+                                                    <label>
+                                                        <input type="checkbox" name="Sacraficefly"> Sacrafice Fly
+                                                    </label><br>
+                                                    <label>
+                                                        <input type="checkbox" name="fielders-choice"> Fielder's Choice
+                                                    </label><br>
+                                                    <label>
+                                                        <input type="checkbox" name="reach-on-error"> Reach on Error
+                                                    </label><br>
+                                                    <label>
+                                                        <input type="checkbox" name="dropped-strike"> Dropped Strike
+                                                    </label><br>
+                                                    <label>
+                                                        <input type="checkbox" name="defensiveinterference"> Defensive Interference
+                                                    </label><br>
+                                            <!---
+                                                    <label>
+                                                        Total At-Bats:
+                                                        <input type="number" id="total-at-bats" value="0">
+                                                    </label><br>
+                                            
+                                                    <button type="button" onclick="calculateBattingAverage()">Calculate  Batting Average</button>
+                                                </form>
+                                            
+                                                <p>Batting Average: <span id="batting-average">-</span></p> -->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center;">
+                                            <button type="submit">Submit</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; &trade; 2024 A Hollrah Production</p>
+        </footer>
+        <script src="/script/batting.js"></script>
+    </body>
+</html>
