@@ -1,0 +1,27 @@
+body {
+    font-family: sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* Add styles for individual at-bat boxes to visually present base paths or play outcomes as in a traditional scorebook */
+
+.at-bat-cell {
+    width: 30px;
+    height: 30px;
+    /* etc. */
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Team Baseball Scorecard</title>
+    <link rel="styesheet" href="/CSS/style.css">
+    <script src="/JavaScript/script.js"></script>
+</head>
+<body>
+    <div class="scorecard-conainer">
+    <h1>Home Team Scorecard</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <!-- Innings columns-->
+                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>R</th>
+                </tr>
+            </thead>
+            <tbody id="lineup-body">
+                    <!-- Player rows will be added here by JavaScript-->
+                    
+            </tbody>
+        </table>
+        <div class="game-state">
+            <!-- Basic game stats display (balls, strikes,outs, bases)-->
+            <!-- Javascript will manage updates here-->
+        </div>
+        <button onclick="exportToExcel()">Export to Excel</button>
+    </div>
+</body>
+</html>
