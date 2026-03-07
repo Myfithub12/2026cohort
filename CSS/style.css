@@ -1,5 +1,27 @@
 body {
+    display: flex;
+    flex-direction: column;
     font-family: sans-serif;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 8px;
+    margin: 8px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 8px;
+    margin: 8px;
 }
 
 table {
@@ -21,4 +43,19 @@ th {
 .at-bat-cell {
     width: 30px;
     height: 30px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 8px;
+    margin: 8px;
+}
+
+@media (min-width: 320px) {
+    
 }
