@@ -39,6 +39,15 @@ function exportToExcel() {
         csv += rowData.join(',') + '\n';
     });
 
+    document.getElementById("myTable").addEventListener("input", (e) => {
+  const table = document.getElementById("myTable");
+  const rowCount = table.rows.length;
+  
+  // Logic: If we are at row 9 and it's currently the last row, add row 10
+  if (rowCount === 9) {
+    addRow();
+  }
+});
     // ... (rest of your existing blob/download code)
 
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
