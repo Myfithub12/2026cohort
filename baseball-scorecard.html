@@ -6,12 +6,14 @@
     <title>Home Team Baseball Scorecard</title>
     <link rel="stylesheet" href="/CSS/style.css">
     <script defer src="/script/script.js"></script>
+    <script defer src="/script/batting.js"></script>
 </head>
 <body>
     <div class="scorecard-container">
         <h1>Home Team Scorecard</h1>
 
         <table>
+            <tbody id="lineup-body">
             <thead>
                 <tr>
                     <th>Jersey Number</th>
@@ -22,7 +24,7 @@
                     <th>Totals</th>
                 </tr>
             </thead>
-            <tbody id="lineup-body"></tbody>
+            </tbody>
         </table>
 
         <button onclick="exportToExcel()">Export to Excel</button>
