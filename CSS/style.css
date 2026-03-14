@@ -24,6 +24,10 @@ main{
     margin: 8px;
 }
 
+.team-section {
+    margin-bottom: 40px; /* Puts a nice gap between the two tables */
+}
+
 table {
     border-collapse: collapse;
     width: 80%;

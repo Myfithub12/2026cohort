@@ -11,33 +11,44 @@
 <body>
     <div class="scorecard-container">
         <h1>Scorecard</h1>
+     <div class="scorecard-container">
+    <h1>Scorecard</h1>
+
+    <div class="team-section">
+        <h2>Home Team</h2>
         <table>
             <thead>
-                <h2>Home Team</h2>
                 <tr>
                     <th>#</th>
                     <th>Player</th>
                     <th>Pos</th>
-                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-                    <th>6</th><th>7</th><th>8</th><th>9</th>
+                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
                     <th>Totals</th>
                 </tr>
-           <tbody id="lineup-body-ht"></tbody> </thead>
-            <thead>
-                <h2>Visiting Team</h2>
-                <tr>
-                    <th>#</th>
-                    <th>Player</th>
-                    <th>Pos</th>
-                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-                    <th>6</th><th>7</th><th>8</th><th>9</th>
-                    <th>Totals</th>
-                </tr>
-            <tbody id="lineup-body-at"></tbody></thead>
-            </tbody>
+            </thead>
+            <tbody id="lineup-body-ht">
+                </tbody>
         </table>
-
-        <button onclick="exportToExcel()">Export to Excel</button>
     </div>
+
+    <hr> <div class="team-section">
+        <h2>Visiting Team</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+                    <th>Totals</th>
+                </tr>
+            </thead>
+            <tbody id="lineup-body-at">
+                </tbody>
+        </table>
+    </div>
+
+    <button onclick="exportToExcel()">Export to Excel</button>
+</div>
 </body>
 </html>
