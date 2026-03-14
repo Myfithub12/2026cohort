@@ -33,7 +33,8 @@ function exportToExcel() {
         const cells = row.querySelectorAll('td');
         const rowData = Array.from(cells).map(cell => {
             const input = cell.querySelector('input');
-            // If there's an input, get its value; otherwise, get the text (for the Total column)
+
+// If there's an input, get its value; otherwise, get the text (for the Total column)
             return input ? input.value : cell.innerText;
         });
         csv += rowData.join(',') + '\n';
@@ -44,10 +45,12 @@ function exportToExcel() {
   const rowCount = table.rows.length;
   
   // Logic: If we are at row 9 and it's currently the last row, add row 10
+  
   if (rowCount === 9) {
     addRow();
   }
 });
+
     // ... (rest of your existing blob/download code)
 
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
