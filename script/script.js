@@ -28,9 +28,6 @@ window.onload = () => {
     populateLineup('lineup-body-at');
 };
 
-function exportToExcel() {
-    let csv = 'Team,Number,Player,Pos,1,2,3,4,5,6,7,8,9,Totals\n';
-
     // Use querySelectorAll to grab rows from BOTH bodies
     const rows = document.querySelectorAll('#lineup-body-ht tr, #lineup-body-at tr');
     
@@ -49,4 +46,3 @@ function exportToExcel() {
     link.href = URL.createObjectURL(blob);
     link.download = "baseball_scorecard.csv";
     link.click();
-}
