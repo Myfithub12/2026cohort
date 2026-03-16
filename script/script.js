@@ -28,21 +28,21 @@ window.onload = () => {
     populateLineup('lineup-body-at');
 };
 
-    // Use querySelectorAll to grab rows from BOTH bodies
-    const rows = document.querySelectorAll('#lineup-body-ht tr, #lineup-body-at tr');
+// Use querySelectorAll to grab rows from BOTH bodies
+const rows = document.querySelectorAll('#lineup-body-ht tr, #lineup-body-at tr');
     
-    rows.forEach(row => {
-        const cells = row.querySelectorAll('td');
-        const rowData = Array.from(cells).map(cell => {
-            const input = cell.querySelector('input');
-            return input ? input.value : cell.innerText;
-        });
-        csv += rowData.join(',') + '\n';
+rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    const rowData = Array.from(cells).map(cell => {
+        const input = cell.querySelector('input');
+        return input ? input.value : cell.innerText;
     });
+    csv += rowData.join(',') + '\n';
+});
 
-    // Create and download the blob
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "baseball_scorecard.csv";
-    link.click();
+// Create and download the blob
+const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+const link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "baseball_scorecard.csv";
+link.click();
