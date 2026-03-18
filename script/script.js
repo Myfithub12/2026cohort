@@ -6,17 +6,17 @@ function populateLineup(tableId) {
     const rowCount = 9; 
 
     for (let i = 0; i < rowCount; i++) {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td><input type="text" placeholder="#" class="input-small"></td>
-            <td><input type="text" placeholder="Player Name" class="input-large"></td>
-            <td><input type="text" placeholder="Pos" class="input-small"></td>
-            ${Array(9).fill('<td><input type="text" class="at-bat-input"></td>').join('')}
-            <td class="total-runs">0</td>
-        `;
-        tbody.appendChild(row);
-    }
-}
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <!-- Removed value="${i + 1}" to allow manual entry -->
+        <td><input type="number" placeholder="#" class="player-num input-small"></td>
+        <td><input type="text" placeholder="Player Name" class="player-name input-large"></td>
+        <td><input type="text" placeholder="Pos" class="player-pos input-small"></td>
+        ${Array(9).fill('<td><input type="text" class="at-bat-input"></td>').join('')}
+        <td class="total-runs">0</td>
+    `;
+    tbody.appendChild(row);
+}}
 
 // Call the function for BOTH tables
 populateLineup('lineup-body-ht');
@@ -46,3 +46,8 @@ const link = document.createElement("a");
 link.href = URL.createObjectURL(blob);
 link.download = "baseball_scorecard.csv";
 link.click();
+
+const rowData = Array.from(cells).map(cell => {
+    const input = cell.querySelector('input');
+    return input ? input.value : cell.innerText; // This will now grab your manual #
+});

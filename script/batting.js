@@ -1,23 +1,38 @@
-function exportToExcel() {
-    let csv = 'Team,Number,Player,Pos,1,2,3,4,5,6,7,8,9,Totals\n';
-}
-
-
 async function exportToExcel() {
-  const csvContent = "Name,Age\nJohn Doe,30\nJane Smith,25"; // Your CSV data
-  const blob = new Blob([csvContent], { type: 'text/csv' });
+  // 1. Create the Header Row
+  let csvContent = "Number,Player,Pos,1,2,3,4,5,6,7,8,9,Total\n";
+
+  // Helper function to scrape a specific team table
+  const scrapeTeam = (tbodyId, teamLabel) => {
+    let teamData = "";
+    const rows = document.querySelectorAll(`#${tbodyId} tr`);
+    
+    rows.forEach(row => {
+      const cells = row.querySelectorAll('td');
+      const rowValues = Array.from(cells).map(cell => {
+        const input = cell.querySelector('input');
+        return input ? input.value : cell.innerText;
+      });
+      // Add the team label (Home/Away) to the first column
+      teamData += `${teamLabel},` + rowValues.join(',') + '\n';
+    });
+    return teamData;
+  };
+
+  // 2. Scrape Home Team then Away Team separately
+  csvContent += scrapeTeam('lineup-body-ht', 'Home'); // HT data
+  csvContent += "\n"; // Optional blank row for spacing in Excel
+  csvContent += scrapeTeam('lineup-body-at', 'Away'); // AT data
+
+  // 3. SAVE THE FILE (Using your existing logic)
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
 
   if ('showSaveFilePicker' in window) {
     try {
-      // 1. Show the "Save As" dialog
       const handle = await window.showSaveFilePicker({
-        suggestedName: 'export.csv',
-        types: [{
-          description: 'CSV File',
-          accept: { 'text/csv': ['.csv'] },
-        }],
+        suggestedName: 'baseball_lineup.csv',
+        types: [{ description: 'CSV File', accept: { 'text/csv': ['.csv'] } }],
       });
-      // 2. Write the data to the chosen location
       const writable = await handle.createWritable();
       await writable.write(blob);
       await writable.close();
@@ -25,15 +40,15 @@ async function exportToExcel() {
       if (err.name !== 'AbortError') console.error(err);
     }
   } else {
-    // Fallback: Automatic download to "Downloads" folder
+    // Fallback: Automatic download for older browsers
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'export.csv';
+    a.download = 'baseball_lineup.csv';
     a.click();
     URL.revokeObjectURL(url);
   }
-}  
+}
 
 /* Sending to backend server
 async function exportToExcel() {
