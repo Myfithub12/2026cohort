@@ -9,8 +9,7 @@ function populateLineup(tableId) {
     const row = document.createElement('tr');
     row.innerHTML = `
         <!-- Removed value="${i + 1}" to allow manual entry -->
-        <td><input type="number" placeholder="#" class="player-num input-small"></td>
-        <td><input type="text" placeholder="Player Name" class="player-name input-large"></td>
+        <td><input type="text" placeholder="Player" class="player-name input-large"></td>
         <td><input type="text" placeholder="Pos" class="player-pos input-small"></td>
         ${Array(9).fill('<td><input type="text" class="at-bat-input"></td>').join('')}
         <td class="total-runs">0</td>

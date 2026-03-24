@@ -19,9 +19,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>Player</th>
-                    <th>Pos</th>
+                    <th>Position</th>
                     <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
                     <th>Totals</th>
                 </tr>
@@ -36,9 +35,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>Player</th>
-                    <th>Pos</th>
+                    <th>Position</th>
                     <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
                     <th>Totals</th>
                 </tr>
@@ -46,6 +44,24 @@
             <tbody id="lineup-body-at">
                 </tbody>
         </table>
+    </div>
+    <div>
+        <div class="dropdown">
+            <div class="dropdown-button" id="dropdownButton"></div>
+
+            <!-- Dropdown List Items-->
+             <div class="menu" id="optionsMenu">
+                <div class="menu-item">C</div>
+                <div class="menu-item">1B</div>
+                <div class="menu-item">2B</div>
+                <div class="menu-item">3B</div>
+                <div class="menu-item">LF</div>
+                <div class="menu-item">CF</div>
+                <div class="menu-item">RF</div>
+                <div class="menu-item">SS</div>
+                <div class="menu-item">DH</div>
+             </div>
+        </div>
     </div>
 
     <button onclick="exportToExcel()">Export to Excel</button>
