@@ -1,52 +1,42 @@
+function createInningCell() {
+    return `
+        <td>
+            <select class="atbat-result">
+                <option value="">-- Select Result --</option>
+                <option value="walk">Walk</option>
+                <option value="sacrifice-bunt">Sacrifice Bunt</option>
+                <option value="hit-by-pitch">Hit By Pitch</option>
+                <option value="defensive-interference">Interfered By D</option>
+                <option value="hit">Hit</option>
+                <option value="ground-out">Ground Out</option>
+                <option value="strikeout">Strikeout</option>
+                <option value="fly-out">Fly Out</option>
+                <option value="fielders-choice">Fielder's Choice</option>
+                <option value="reach-on-error">Reach on Error</option>
+            </select>
+        </td>
+    `;
+}
+
 function populateLineup(tableId) {
     const tbody = document.getElementById(tableId);
-    if (!tbody) return; // Safety check
+    tbody.innerHTML = "";
 
-    tbody.innerHTML = ""; 
-    const rowCount = 9; 
+    for (let i = 0; i < 9; i++) {
+        const row = document.createElement("tr");
 
-    for (let i = 0; i < rowCount; i++) {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <!-- Removed value="${i + 1}" to allow manual entry -->
-        <td><input type="text" placeholder="Player" class="player-name input-large"></td>
-        <td><input type="text" placeholder="Pos" class="player-pos input-small"></td>
-        ${Array(9).fill('<td><input type="text" class="at-bat-input"></td>').join('')}
-        <td class="total-runs">0</td>
-    `;
-    tbody.appendChild(row);
-}}
+        row.innerHTML = `
+            <td><input type="text" class="player-name" placeholder="Player"></td>
+            <td><input type="text" class="player-pos" placeholder="Pos"></td>
+            ${Array(9).fill(createInningCell()).join("")}
+            <td class="total-runs">0</td>
+        `;
 
-// Call the function for BOTH tables
-populateLineup('lineup-body-ht');
-populateLineup('lineup-body-at');
+        tbody.appendChild(row);
+    }
+}
 
-// Run this when the page loads
-window.onload = () => {
-    populateLineup('lineup-body-ht');
-    populateLineup('lineup-body-at');
-};
-
-// Use querySelectorAll to grab rows from BOTH bodies
-const rows = document.querySelectorAll('#lineup-body-ht tr, #lineup-body-at tr');
-    
-rows.forEach(row => {
-    const cells = row.querySelectorAll('td');
-    const rowData = Array.from(cells).map(cell => {
-        const input = cell.querySelector('input');
-        return input ? input.value : cell.innerText;
-    });
-    csv += rowData.join(',') + '\n';
-});
-
-// Create and download the blob
-const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-const link = document.createElement("a");
-link.href = URL.createObjectURL(blob);
-link.download = "baseball_scorecard.csv";
-link.click();
-
-const rowData = Array.from(cells).map(cell => {
-    const input = cell.querySelector('input');
-    return input ? input.value : cell.innerText; // This will now grab your manual #
+window.addEventListener("DOMContentLoaded", () => {
+    populateLineup("lineup-body-ht");
+    populateLineup("lineup-body-at");
 });

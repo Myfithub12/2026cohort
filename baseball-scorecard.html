@@ -8,63 +8,50 @@
     <script defer src="/script/script.js"></script>
     <script defer src="/script/batting.js"></script>
     <script defer src="/script/pitching.js"></script>
-    <script defer src="server.js"></script>
 </head>
 <body>
     <div class="scorecard-container">
-    <h1>Scorecard</h1>
+        <h1>Scorecard</h1>
 
-    <div class="team-section">
-        <h2>Home Team</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Player</th>
-                    <th>Position</th>
-                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
-                    <th>Totals</th>
-                </tr>
-            </thead>
-            <tbody id="lineup-body-ht">
-                </tbody>
-        </table>
-    </div>
-
-    <hr> <div class="team-section">
-        <h2>Visiting Team</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Player</th>
-                    <th>Position</th>
-                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
-                    <th>Totals</th>
-                </tr>
-            </thead>
-            <tbody id="lineup-body-at">
-                </tbody>
-        </table>
-    </div>
-    <div>
-        <div class="dropdown">
-            <div class="dropdown-button" id="dropdownButton"></div>
-
-            <!-- Dropdown List Items
-             <div class="menu" id="optionsMenu">
-                <div class="menu-item">C</div>
-                <div class="menu-item">1B</div>
-                <div class="menu-item">2B</div>
-                <div class="menu-item">3B</div>
-                <div class="menu-item">LF</div>
-                <div class="menu-item">CF</div>
-                <div class="menu-item">RF</div>
-                <div class="menu-item">SS</div>
-                <div class="menu-item">DH</div>
-             </div> -->
+        <!-- HOME TEAM -->
+        <div class="team-section">
+            <h2>Home Team</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Position</th>
+                        <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+                        <th>6</th><th>7</th><th>8</th><th>9</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="lineup-body-ht"></tbody>
+            </table>
         </div>
-    </div>
+        <hr>
 
-    <button onclick="exportToExcel()">Export to Excel</button>
-</div>
+        <!-- AWAY TEAM -->
+        <div class="team-section">
+            <h2>Visiting Team</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Position</th>
+                        <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+                        <th>6</th><th>7</th><th>8</th><th>9</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="lineup-body-at"></tbody>
+            </table>
+        </div>
+
+        <button onclick="exportToExcel()">Export to Excel</button>
+    </div>
 </body>
+</html>
+
+
 </html>

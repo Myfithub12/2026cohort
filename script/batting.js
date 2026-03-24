@@ -1,53 +1,41 @@
 async function exportToExcel() {
-  // 1. Create the Header Row
-  let csvContent = "Number,Player,Pos,1,2,3,4,5,6,7,8,9,Total\n";
+    let csvContent = "Team,Player,Pos,1,2,3,4,5,6,7,8,9,Total\n";
 
-  // Helper function to scrape a specific team table
-  const scrapeTeam = (tbodyId, teamLabel) => {
-    let teamData = "";
-    const rows = document.querySelectorAll(`#${tbodyId} tr`);
-    
-    rows.forEach(row => {
-      const cells = row.querySelectorAll('td');
-      const rowValues = Array.from(cells).map(cell => {
-        const input = cell.querySelector('input');
-        return input ? input.value : cell.innerText;
-      });
-      // Add the team label (Home/Away) to the first column
-      teamData += `${teamLabel},` + rowValues.join(',') + '\n';
-    });
-    return teamData;
-  };
+    function scrapeTeam(tbodyId, teamName) {
+        const rows = document.querySelectorAll(`#${tbodyId} tr`);
+        let output = "";
 
-  // 2. Scrape Home Team then Away Team separately
-  csvContent += scrapeTeam('lineup-body-ht', 'Home'); // HT data
-  csvContent += "\n"; // Optional blank row for spacing in Excel
-  csvContent += scrapeTeam('lineup-body-at', 'Away'); // AT data
+        rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
 
-  // 3. SAVE THE FILE (Using your existing logic)
-  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const rowValues = Array.from(cells).map(cell => {
+                const input = cell.querySelector("input");
+                const select = cell.querySelector("select");
 
-  if ('showSaveFilePicker' in window) {
-    try {
-      const handle = await window.showSaveFilePicker({
-        suggestedName: 'baseball_lineup.csv',
-        types: [{ description: 'CSV File', accept: { 'text/csv': ['.csv'] } }],
-      });
-      const writable = await handle.createWritable();
-      await writable.write(blob);
-      await writable.close();
-    } catch (err) {
-      if (err.name !== 'AbortError') console.error(err);
+                if (select) return select.value;   // <-- NO NOTES
+                if (input) return input.value;
+
+                return cell.innerText;
+            });
+
+            output += `${teamName},` + rowValues.join(",") + "\n";
+        });
+
+        return output;
     }
-  } else {
-    // Fallback: Automatic download for older browsers
+
+    csvContent += scrapeTeam("lineup-body-ht", "Home");
+    csvContent += "\n";
+    csvContent += scrapeTeam("lineup-body-at", "Away");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'baseball_lineup.csv';
+    a.download = "baseball_scorecard.csv";
     a.click();
     URL.revokeObjectURL(url);
-  }
 }
 
 /* Sending to backend server

@@ -28,6 +28,17 @@ main{
     margin-bottom: 40px; /* Puts a nice gap between the two tables */
 }
 
+.player-pos {
+    width: 40px;   /* or 50px, 60px — whatever looks right */
+    text-align: center;
+}
+
+.atbat-result {
+    width: 50px;      /* cut width in half */
+    font-size: 10px;  /* optional: smaller text */
+    padding: 2px;     /* tighter spacing */
+}
+
 table {
     border-collapse: collapse;
     width: 80%;
