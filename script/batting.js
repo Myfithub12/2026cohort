@@ -82,9 +82,9 @@ app.post('/upload', upload.single('file'), (req, res) => {
 });
 */
 
-/*
+
 // Get the selected value from the dropdown
-const selection = document.getElementById('hitOrOut').value;
+const selection = document.getElementById('hit-Out-Walk').value;
 
 // Creating variables for ERA calculation
 let era = parseFloat(document.getElementById('eraValue').innerText);
@@ -116,7 +116,8 @@ window.onload = function() {
 function calculateBattingAverage() {
     // Get checkboxes
     const hit = document.querySelector('input[name="hit"]').checked;
-    const plainOldOut = document.querySelector('input[name="plain-old-out"]').checked;
+    const strikeout = document.querySelector('input[name="strikeout"]').checked;
+    const forceOutChoice = document.querySelector('input[name="force-out"]').checked;
     const fieldersChoice = document.querySelector('input[name="fielders-choice"]').checked;
     const reachOnError = document.querySelector('input[name="reach-on-error"]').checked;
     const droppedStrike = document.querySelector('input[name="dropped-strike"]').checked;
@@ -136,4 +137,4 @@ function calculateBattingAverage() {
 
     // Display batting average
     document.getElementById('batting-average').textContent = battingAverage.toFixed(3); // Display with three decimal places
-} */
+}
