@@ -92,7 +92,7 @@ const earnedRuns = 1; //assuming 1 earned run is added for each "hit"
 
 function saveFormData() {
     const formData = {
-        name: document.getElementById('date').value,
+        date: document.getElementById('date').value,
         name: document.getElementById('name').value,
         team: document.getElementById('team').value,
     };
