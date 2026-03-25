@@ -38,39 +38,6 @@ async function exportToExcel() {
     URL.revokeObjectURL(url);
 }
 
-/* Sending to backend server
-async function exportToExcel() {
-  const csvContent = "Name,Age\nJohn Doe,30\nJane Smith,25";
-  
-  // Use FormData to send the file to your server
-  const formData = new FormData();
-  const blob = new Blob([csvContent], { type: 'text/csv' });
-  formData.append('file', blob, 'export.csv');
-
-  try {
-    const response = await fetch('https://your-api.com', {
-      method: 'POST',
-      body: formData
-    });
-    const result = await response.json();
-    console.log('Success:', result);
-  } catch (error) {
-    console.error('Error saving to server:', error);
-  }
-}
-
-// Backend (node.js/express example)
-const express = require('express');
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' }); // Saves to an "uploads" folder
-const app = express();
-
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.json({ message: 'File saved on server!', file: req.file });
-});
-*/
-
-
 // Get the selected value from the dropdown
 const selection = document.getElementById('hit-Out-Walk').value;
 
@@ -102,27 +69,64 @@ window.onload = function() {
 };
 
 function calculateBattingAverage() {
-    // Get checkboxes
-    const hit = document.querySelector('input[name="hit"]').checked;
-    const strikeout = document.querySelector('input[name="strikeout"]').checked;
-    const forceOutChoice = document.querySelector('input[name="force-out"]').checked;
-    const fieldersChoice = document.querySelector('input[name="fielders-choice"]').checked;
-    const reachOnError = document.querySelector('input[name="reach-on-error"]').checked;
-    const droppedStrike = document.querySelector('input[name="dropped-strike"]').checked;
+    const results = document.querySelectorAll('.atbat-result');
 
-    // Get total number of at-bats
-    const totalAtBats = parseInt(document.getElementById('total-at-bats').value) || 0;
-
-    // Calculate total hits
+    let totalAtBats = 0;
     let totalHits = 0;
 
-    if (hit) {
-        totalHits++;
-    }
+    results.forEach(select => {
+        const value = select.value;
 
-    // Calculate batting average
-    const battingAverage = totalHits / totalAtBats || 0; // Default to 0 if no at bats
+        // HIT
+        if (value === "hit" ||
+            value === "reach-on-error"
+        ) {
+            totalHits++;
+            totalAtBats++;
+        }
 
-    // Display batting average
-    document.getElementById('batting-average').textContent = battingAverage.toFixed(3); // Display with three decimal places
+        // OUTS that count as at-bats
+        else if (
+            value === "ground-out" ||
+            value === "strikeout" ||
+            value === "fly-out" ||
+            value === "fielders-choice"
+        ) {
+            totalAtBats++;
+        }
+
+        // Walk, HBP, Sac Bunt, Interference → do NOT count as AB
+    });
+
+    const battingAverage = totalHits / totalAtBats || 0;
+
+    document.getElementById('batting-average').textContent =
+        battingAverage.toFixed(3);
 }
+
+function updateERA() {
+    const results = document.querySelectorAll('.atbat-result');
+
+    let era = parseFloat(document.getElementById('eraValue').innerText);
+    let earnedRuns = 0;
+
+    results.forEach(select => {
+        if (select.value === "hit" ||
+            select.value === "reach-on-error"
+        ) {
+            earnedRuns += 1;
+        }
+    });
+
+    era += earnedRuns;
+
+    document.getElementById('eraValue').innerText = era.toFixed(2);
+}
+
+// Auto-update stats after each at-bat selection
+document.querySelectorAll('.atbat-result').forEach(select => {
+    select.addEventListener('change', () => {
+        calculateBattingAverage();
+        updateERA();
+    });
+});
