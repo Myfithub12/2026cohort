@@ -1,7 +1,15 @@
 {
   "name": "2026cohort",
   "version": "1.0.0",
-  "description": "",
+  "description": "Baseball Scorecard",
+  "homepage": "https://github.com/Myfithub12/2026cohort#readme",
+  "bugs": {
+    "url": "https://github.com/Myfithub12/2026cohort/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Myfithub12/2026cohort.git"
+  },
   "license": "ISC",
   "author": "Mark Hollrah",
   "type": "module",
