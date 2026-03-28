@@ -1,0 +1,33 @@
+.team-section {
+    margin-bottom: 40px; /* Puts a nice gap between the two tables */
+}
+
+.player-pos {
+    width: 40px;   /* or 50px, 60px — whatever looks right */
+    text-align: center;
+}
+
+.atbat-result {
+    width: 50px;      /* cut width in half */
+    font-size: 10px;  /* optional: smaller text */
+    padding: 2px;     /* tighter spacing */
+}
+
+.input-large { width: 150px !important; text-align: left !important; }
+.input-small { width: 40px !important; }
+.at-bat-input { width: 30px !important; }
+
+/* Optional: add a light border on focus so you know which cell you're in */
+#lineup-body input:focus {
+    outline: 1px solid #007bff;
+    background-color: #f0f8ff;
+}
+
+.at-bat-cell {
+    width: 30px;
+    height: 30px;
+}
+
+@media (min-width: 320px) {
+    
+}
