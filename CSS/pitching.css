@@ -46,3 +46,120 @@ button.delete-row {
     cursor: pointer;
 }
 
+/* -----------------------------------
+   Small Devices (phones, 320px–480px)
+----------------------------------- */
+@media (max-width: 480px) {
+
+    #pitchingTable {
+        font-size: 12px;
+    }
+
+    #pitchingTable th,
+    #pitchingTable td {
+        padding: 6px;
+    }
+
+    #pitchingTable td:nth-child(2),
+    #pitchingTable td:nth-child(3),
+    #pitchingTable td:nth-child(4) {
+        display: none; /* Hide Walks, Strikeouts, Hits for tiny screens */
+    }
+
+    button.edit-row,
+    button.delete-row {
+        padding: 4px 6px;
+        font-size: 12px;
+    }
+
+    #sortWhip {
+        width: 100%;
+        margin-top: 15px;
+    }
+}
+
+/* -----------------------------------
+   Medium Devices (phones in landscape, small tablets)
+   481px–768px
+----------------------------------- */
+@media (min-width: 481px) and (max-width: 768px) {
+
+    #pitchingTable {
+        font-size: 14px;
+    }
+
+    #pitchingTable th,
+    #pitchingTable td {
+        padding: 8px;
+    }
+
+    button.edit-row,
+    button.delete-row {
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+
+    #sortWhip {
+        width: auto;
+        padding: 8px 12px;
+    }
+}
+
+/* -----------------------------------
+   Large Tablets / Small Laptops
+   769px–1024px
+----------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    #pitchingTable {
+        font-size: 15px;
+    }
+
+    #pitchingTable th,
+    #pitchingTable td {
+        padding: 10px;
+    }
+
+    button.edit-row,
+    button.delete-row {
+        padding: 6px 10px;
+    }
+}
+
+/* -----------------------------------
+   Desktops (1025px–1440px)
+----------------------------------- */
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+    #pitchingTable {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    #sortWhip {
+        margin-left: 5px;
+    }
+}
+
+/* -----------------------------------
+   Extra Large Screens (1441px+)
+----------------------------------- */
+@media (min-width: 1441px) {
+
+    #pitchingTable {
+        width: 70%;
+        margin: 0 auto;
+        font-size: 18px;
+    }
+
+    #pitchingTable th,
+    #pitchingTable td {
+        padding: 12px;
+    }
+
+    button.edit-row,
+    button.delete-row {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+}
