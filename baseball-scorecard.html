@@ -18,6 +18,14 @@
         <div class="team-section">
             <h2>Home Team</h2>
             <table>
+                <tr>
+                    <th><button onclick="ball">Ball</button></th>
+            <th><button onclick="strike">Strike</button></th>
+            <th><button onclick="foul">Foul</button></th>
+                    </th>
+                </tr>
+            </table>
+            <table>
                 <thead>
                     <tr>
                         <th>Player</th>
@@ -30,13 +38,30 @@
                 <tbody id="lineup-body-ht"></tbody>
             </table>
             <button onclick="addPlayer('lineup-body-ht')">Add Home Player</button>
-
+            <table>
+                <tr>
+                    <th>Pitcher</th>
+                    <th>Walks</th>
+                    <th>Strikeouts</th>
+                    <th>Hits</th>
+                    <th>Innings Pitched</th>
+                    <th>WHIP</th>
+                </tr>
+            </table>
         </div>
         <hr>
 
         <!-- AWAY TEAM -->
         <div class="team-section">
             <h2>Visiting Team</h2>
+            <table>
+                <tr>
+                    <th><button onclick="ball">Ball</button></th>
+            <th><button onclick="strike">Strike</button></th>
+            <th><button onclick="foul">Foul</button></th>
+                    </th>
+                </tr>
+            </table>
             <table>
                 <thead>
                     <tr>
@@ -50,7 +75,16 @@
                 <tbody id="lineup-body-at"></tbody>
             </table>
             <button onclick="addPlayer('lineup-body-at')">Add Away Player</button>
-
+            <table>
+                <tr>
+                    <th>Pitcher</th>
+                    <th>Walks</th>
+                    <th>Strikeouts</th>
+                    <th>Hits</th>
+                    <th>Innings Pitched</th>
+                    <th>WHIP</th>
+                </tr>
+            </table>
         </div>
 
         <button onclick="exportToNotepad()">Export to Notepad</button>
