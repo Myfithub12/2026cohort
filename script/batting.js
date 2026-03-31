@@ -1,5 +1,5 @@
-async function exportToExcel() {
-    let csvContent = "Team,Player,Pos,1,2,3,4,5,6,7,8,9,Total\n";
+async function exportToNotepad() {
+    let txtContent = "Team,Player,Pos,1,2,3,4,5,6,7,8,9,Total\n";
 
     function scrapeTeam(tbodyId, teamName) {
         const rows = document.querySelectorAll(`#${tbodyId} tr`);
@@ -24,16 +24,20 @@ async function exportToExcel() {
         return output;
     }
 
-    csvContent += scrapeTeam("lineup-body-ht", "Home");
-    csvContent += "\n";
-    csvContent += scrapeTeam("lineup-body-at", "Away");
+    txtContent += scrapeTeam("lineup-body-ht", "Home");
+    txtContent += "\n";
+    txtContent += scrapeTeam("lineup-body-at", "Away");
 
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    // Changed from CSV to TXT
+    const blob = new Blob([txtContent], { type: "text/plain;charset=utf-8;" });
 
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "baseball_scorecard.csv";
+
+    // Changed filename extension
+    a.download = "baseball_scorecard.txt";
+
     a.click();
     URL.revokeObjectURL(url);
 }
@@ -130,3 +134,61 @@ document.querySelectorAll('.atbat-result').forEach(select => {
         updateERA();
     });
 });
+
+function updateERA() {
+    // ... your existing ERA code ...
+}
+
+//INSERT addPlayer() RIGHT HERE
+function addPlayer(tbodyId, insertAfterRow = null) {
+    const tbody = document.getElementById(tbodyId);
+
+    const newRow = document.createElement("tr");
+
+    newRow.innerHTML = `
+        <td><input type="text" placeholder="Player Name"></td>
+        <td><input type="text" placeholder="Pos"></td>
+        <td><select class="atbat-result">
+                <option value="">--</option>
+                <option value="hit">Hit</option>
+                <option value="ground-out">Ground Out</option>
+                <option value="strikeout">Strikeout</option>
+                <option value="fly-out">Fly Out</option>
+                <option value="reach-on-error">Reach on Error</option>
+                <option value="walk">Walk</option>
+            </select>
+        </td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><button class="add-below">+</button></td>
+    `;
+
+    // Insert in correct position
+    if (insertAfterRow) {
+        insertAfterRow.insertAdjacentElement("afterend", newRow);
+    } else {
+        tbody.appendChild(newRow);
+    }
+
+    // Make sure new selects update stats
+    newRow.querySelectorAll('.atbat-result').forEach(select => {
+        select.addEventListener('change', () => {
+            calculateBattingAverage();
+            updateERA();
+        });
+    });
+
+    // Add handler for the "+" button
+    newRow.querySelector(".add-below").addEventListener("click", () => {
+        addPlayer(tbodyId, newRow);
+    });
+}
+
+document.querySelectorAll(`#${tbodyId} tr`)
+
