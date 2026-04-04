@@ -1,190 +1,43 @@
+/* ============================
+   GLOBAL LAYOUT
+============================ */
+
 body {
     display: flex;
     flex-direction: column;
     font-family: sans-serif;
 }
 
-header{
-    display: flex;
-    flex-direction: column;
+header, main, footer {
     width: 100%;
     background-color: #f1f1f1;
     text-align: center;
     padding: 8px;
     margin: 8px;
-}
-
-main{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: #f1f1f1;
-    text-align: center;
-    padding: 8px;
-    margin: 8px;
-}
-
-table {
-    border-collapse: collapse;
-    width: 80%;
-    margin: 20px auto;
-}
-
-th, td {
-    border: 1px solid #ccc;
-    padding: 5px;
-    text-align: center;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-.dots {
-    font-size: 30px;
-    text-align: center;
-    height: 40px; /* keeps rows even */
-}
-
-table {
-    text-align: center;
-}
-
-
-/* Makes the inputs look like part of the table */
-#lineup-body input {
-    border: none;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px;
-    text-align: center;
 }
 
 footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
-    background-color: #f1f1f1;
+}
+
+/* ============================
+   GLOBAL TABLE STYLES
+============================ */
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
     text-align: center;
-    padding: 8px;
-    margin: 8px;
 }
 
-/* -----------------------------------
-   Small Devices (phones, 320px–480px)
------------------------------------ */
-@media (max-width: 480px) {
-
-    #pitchingTable {
-        font-size: 12px;
-    }
-
-    #pitchingTable th,
-    #pitchingTable td {
-        padding: 6px;
-    }
-
-    #pitchingTable td:nth-child(2),
-    #pitchingTable td:nth-child(3),
-    #pitchingTable td:nth-child(4) {
-        display: none; /* Hide Walks, Strikeouts, Hits for tiny screens */
-    }
-
-    button.edit-row,
-    button.delete-row {
-        padding: 4px 6px;
-        font-size: 12px;
-    }
-
-    #sortWhip {
-        width: 100%;
-        margin-top: 15px;
-    }
+th, td {
+    border: 1px solid #ccc;
+    padding: 5px;
 }
 
-/* -----------------------------------
-   Medium Devices (phones in landscape, small tablets)
-   481px–768px
------------------------------------ */
-@media (min-width: 481px) and (max-width: 768px) {
-
-    #pitchingTable {
-        font-size: 14px;
-    }
-
-    #pitchingTable th,
-    #pitchingTable td {
-        padding: 8px;
-    }
-
-    button.edit-row,
-    button.delete-row {
-        padding: 5px 8px;
-        font-size: 14px;
-    }
-
-    #sortWhip {
-        width: auto;
-        padding: 8px 12px;
-    }
-}
-
-/* -----------------------------------
-   Large Tablets / Small Laptops
-   769px–1024px
------------------------------------ */
-@media (min-width: 769px) and (max-width: 1024px) {
-
-    #pitchingTable {
-        font-size: 15px;
-    }
-
-    #pitchingTable th,
-    #pitchingTable td {
-        padding: 10px;
-    }
-
-    button.edit-row,
-    button.delete-row {
-        padding: 6px 10px;
-    }
-}
-
-/* -----------------------------------
-   Desktops (1025px–1440px)
------------------------------------ */
-@media (min-width: 1025px) and (max-width: 1440px) {
-
-    #pitchingTable {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    #sortWhip {
-        margin-left: 5px;
-    }
-}
-
-/* -----------------------------------
-   Extra Large Screens (1441px+)
------------------------------------ */
-@media (min-width: 1441px) {
-
-    #pitchingTable {
-        width: 70%;
-        margin: 0 auto;
-        font-size: 18px;
-    }
-
-    #pitchingTable th,
-    #pitchingTable td {
-        padding: 12px;
-    }
-
-    button.edit-row,
-    button.delete-row {
-        padding: 8px 12px;
-        font-size: 16px;
-    }
+th {
+    background-color: #f4f4f4;
 }

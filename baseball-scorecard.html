@@ -10,7 +10,7 @@
     <script defer src="/script/main.js"></script>
     <script defer src="/script/batting.js"></script>
     <script defer src="/script/pitching.js"></script>
-    <script defer src="/script/export.js"></script>
+<script src="/script/export.js"></script>
 </head>
 <body>
     <div class="scorecard-container">
@@ -22,14 +22,13 @@
             <input name="q" type="" title="Home Team" placeholder="Home Team" required ...>
 <table>
     <tr>
-        <td><div id="balls" class="dots"></div></td>
-        <td><div id="strikes" class="dots"></div></td>
-        <td></td>
+        <div id="balls-home" class="dots"></div>
+<div id="strikes-home" class="dots"></div>
     </tr>
     <tr>
-        <th><button onclick="addBall()">Ball</button></th>
-        <th><button onclick="addStrike()">Strike</button></th>
-        <th><button onclick="addFoul()">Foul</button></th>
+        <th><button onclick="addBall('home')">Ball</button></th>
+        <th><button onclick="addStrike('home')">Strike</button></th>
+        <th><button onclick="addFoul('home')">Foul</button></th>
     </tr>
 </table>
             <table>
@@ -56,8 +55,6 @@
         <th>WHIP</th>
     </tr>
 </table>
-<button id="sortWhip">Sort by WHIP</button>
-        </div>
         <hr>
 
         <!-- AWAY TEAM -->
@@ -66,14 +63,13 @@
             <input name="q" type="" title="Away Team" placeholder="Away Team" required ...>
 <table>
     <tr>
-        <td><div id="balls" class="dots"></div></td>
-        <td><div id="strikes" class="dots"></div></td>
-        <td></td>
+<div id="balls-away" class="dots"></div>
+<div id="strikes-away" class="dots"></div>
     </tr>
     <tr>
-        <th><button onclick="addBall()">Ball</button></th>
-        <th><button onclick="addStrike()">Strike</button></th>
-        <th><button onclick="addFoul()">Foul</button></th>
+        <th><button onclick="addBall('away')">Ball</button></th>
+        <th><button onclick="addStrike('away')">Strike</button></th>
+        <th><button onclick="addFoul('away')">Foul</button></th>
     </tr>
 </table>
             <table>
@@ -100,10 +96,9 @@
         <th>WHIP</th>
     </tr>
 </table>
-<button id="sortWhip">Sort by WHIP</button>
-        </div>
 
-        <button onclick="exportToNotepad()">Export to Notepad</button>
+<button onclick="exportToNotepad()">Export to Notepad</button>
+
     </div>
 </body>
 </html>

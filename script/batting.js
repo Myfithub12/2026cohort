@@ -1,10 +1,6 @@
 // Get the selected value from the dropdown
 const selection = document.getElementById('hit-Out-Walk')?.value;
 
-// Creating variables for ERA calculation
-let era = parseFloat(document.getElementById('eraValue').innerText);
-const earnedRuns = 1; // assuming 1 earned run is added for each "hit"
-
 function saveFormData() {
     const formData = {
         date: document.getElementById('date').value,

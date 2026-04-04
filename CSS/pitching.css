@@ -1,3 +1,7 @@
+/* ============================
+   PITCHING TABLE STYLES
+============================ */
+
 #pitchingTable {
     width: 100%;
     border-collapse: collapse;
@@ -46,9 +50,11 @@ button.delete-row {
     cursor: pointer;
 }
 
-/* -----------------------------------
-   Small Devices (phones, 320px–480px)
------------------------------------ */
+/* ============================
+   RESPONSIVE PITCHING TABLE
+============================ */
+
+/* --- Small Devices (phones) --- */
 @media (max-width: 480px) {
 
     #pitchingTable {
@@ -60,10 +66,11 @@ button.delete-row {
         padding: 6px;
     }
 
+    /* Hide Walks, Strikeouts, Hits */
     #pitchingTable td:nth-child(2),
     #pitchingTable td:nth-child(3),
     #pitchingTable td:nth-child(4) {
-        display: none; /* Hide Walks, Strikeouts, Hits for tiny screens */
+        display: none;
     }
 
     button.edit-row,
@@ -78,10 +85,7 @@ button.delete-row {
     }
 }
 
-/* -----------------------------------
-   Medium Devices (phones in landscape, small tablets)
-   481px–768px
------------------------------------ */
+/* --- Medium Devices (481–768px) --- */
 @media (min-width: 481px) and (max-width: 768px) {
 
     #pitchingTable {
@@ -105,10 +109,7 @@ button.delete-row {
     }
 }
 
-/* -----------------------------------
-   Large Tablets / Small Laptops
-   769px–1024px
------------------------------------ */
+/* --- Large Tablets / Small Laptops (769–1024px) --- */
 @media (min-width: 769px) and (max-width: 1024px) {
 
     #pitchingTable {
@@ -126,9 +127,7 @@ button.delete-row {
     }
 }
 
-/* -----------------------------------
-   Desktops (1025px–1440px)
------------------------------------ */
+/* --- Desktops (1025–1440px) --- */
 @media (min-width: 1025px) and (max-width: 1440px) {
 
     #pitchingTable {
@@ -141,9 +140,7 @@ button.delete-row {
     }
 }
 
-/* -----------------------------------
-   Extra Large Screens (1441px+)
------------------------------------ */
+/* --- Extra Large Screens (1441px+) --- */
 @media (min-width: 1441px) {
 
     #pitchingTable {

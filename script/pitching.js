@@ -1,3 +1,32 @@
+/* ============================================================
+   SCOREBOARD BALL / STRIKE / FOUL LOGIC (GLOBAL FUNCTIONS)
+   These MUST remain global so HTML buttons can call them.
+============================================================ */
+
+function addBall(team = "home") {
+    const id = team === "home" ? "balls-home" : "balls-away";
+    document.getElementById(id).textContent += "●";
+}
+
+function addStrike(team = "home") {
+    const id = team === "home" ? "strikes-home" : "strikes-away";
+    document.getElementById(id).textContent += "●";
+}
+
+function addFoul(team = "home") {
+    const id = team === "home" ? "strikes-home" : "strikes-away";
+    const current = document.getElementById(id).textContent.length;
+
+    // Foul balls only add strikes until 2 strikes
+    if (current < 2) {
+        document.getElementById(id).textContent += "●";
+    }
+}
+
+/* ============================================================
+   PITCHING TRACKER MODULE
+============================================================ */
+
 const PitchingTracker = (() => {
 
     const CONFIG = {
@@ -8,31 +37,38 @@ const PitchingTracker = (() => {
         csvHeader: "Name,Team,Walks,Strikeouts,Hits,Innings,WHIP\n"
     };
 
+    /* Load saved pitching data on page load */
     window.addEventListener("load", () => {
         const savedData = localStorage.getItem(CONFIG.storageKey);
         if (savedData) loadPitchingTable(savedData);
     });
 
-    CONFIG.form.addEventListener('submit', (event) => {
-        event.preventDefault();
+    /* Safe form initialization */
+    document.addEventListener('DOMContentLoaded', () => {
+        if (CONFIG.form) {
+            CONFIG.form.addEventListener('submit', (event) => {
+                event.preventDefault();
 
-        const data = {
-            name: document.getElementById('name').value,
-            team: document.getElementById('team').value,
-            hits: parseFloat(document.getElementById('hits').value) || 0,
-            walks: parseFloat(document.getElementById('balls').value) || 0,
-            strikeouts: parseFloat(document.getElementById('strikeouts').value) || 0,
-            innings: parseFloat(document.getElementById('inningsPitched').value) || 1
-        };
+                const data = {
+                    name: document.getElementById('name').value,
+                    team: document.getElementById('team').value,
+                    walks: parseFloat(document.getElementById('walks').value) || 0,
+                    strikeouts: parseFloat(document.getElementById('strikeouts').value) || 0,
+                    hits: parseFloat(document.getElementById('hits').value) || 0,
+                    innings: parseFloat(document.getElementById('inningsPitched').value) || 1
+                };
 
-        const whip = (data.walks + data.hits) / data.innings;
+                const whip = (data.walks + data.hits) / data.innings;
 
-        addPitchingRow({ ...data, whip });
-        savePitchingData(data, whip);
+                addPitchingRow({ ...data, whip });
+                savePitchingData(data, whip);
 
-        CONFIG.form.reset();
+                CONFIG.form.reset();
+            });
+        }
     });
 
+    /* Add a new row to the pitching table */
     function addPitchingRow(data) {
         const row = CONFIG.tableBody.insertRow(-1);
 
@@ -54,6 +90,7 @@ const PitchingTracker = (() => {
         attachPitchingRowEvents(row);
     }
 
+    /* Attach edit/delete events */
     function attachPitchingRowEvents(row) {
         row.querySelector(".delete-row").addEventListener("click", () => {
             if (confirm("Delete this entry?")) {
@@ -67,6 +104,7 @@ const PitchingTracker = (() => {
         });
     }
 
+    /* Edit a pitching row */
     function editPitchingRow(row) {
         const cells = row.querySelectorAll("td");
         const prompts = ["Name", "Team", "Walks", "Strikeouts", "Hits", "Innings"];
@@ -90,6 +128,7 @@ const PitchingTracker = (() => {
         syncPitchingStorage();
     }
 
+    /* Color-code WHIP values */
     function colorWHIP(cell) {
         const val = parseFloat(cell.textContent);
         cell.style.fontWeight = "bold";
@@ -104,6 +143,7 @@ const PitchingTracker = (() => {
         }
     }
 
+    /* Load pitching table from CSV text */
     function loadPitchingTable(text) {
         const lines = text.trim().split("\n").slice(1);
         CONFIG.tableBody.innerHTML = "";
@@ -117,6 +157,7 @@ const PitchingTracker = (() => {
         });
     }
 
+    /* Save table to localStorage */
     function syncPitchingStorage() {
         const rows = CONFIG.tableBody.querySelectorAll("tr");
         let content = CONFIG.csvHeader;
@@ -129,6 +170,7 @@ const PitchingTracker = (() => {
         localStorage.setItem(CONFIG.storageKey, content);
     }
 
+    /* Save a single new entry */
     function savePitchingData(data, whip) {
         const newLine = `${data.name},${data.team},${data.walks},${data.strikeouts},${data.hits},${data.innings},${whip.toFixed(2)}\n`;
 
