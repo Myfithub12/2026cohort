@@ -1,3 +1,46 @@
+async function exportToNotepad() {
+    let txtContent = "Team,Player,Pos,1,2,3,4,5,6,7,8,9,Total\n";
+
+    function scrapeTeam(tbodyId, teamName) {
+        const rows = document.querySelectorAll(`#${tbodyId} tr`);
+        let output = "";
+
+        rows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+
+            const rowValues = Array.from(cells).map(cell => {
+                const input = cell.querySelector("input");
+                const select = cell.querySelector("select");
+
+                if (select) return select.value;
+                if (input) return input.value;
+
+                return cell.innerText;
+            });
+
+            output += `${teamName},` + rowValues.join(",") + "\n";
+        });
+
+        return output;
+    }
+        txtContent += scrapeTeam("lineup-body-ht", "Home");
+    txtContent += "\n";
+    txtContent += scrapeTeam("lineup-body-at", "Away");
+
+    // Changed from CSV to TXT
+    const blob = new Blob([txtContent], { type: "text/plain;charset=utf-8;" });
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+
+    // Changed filename extension
+    a.download = "baseball_scorecard.txt";
+
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
 function createInningCell() {
     return `
         <td>
