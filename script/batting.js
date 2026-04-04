@@ -12,7 +12,7 @@ async function exportToNotepad() {
                 const input = cell.querySelector("input");
                 const select = cell.querySelector("select");
 
-                if (select) return select.value;   // <-- NO NOTES
+                if (select) return select.value;
                 if (input) return input.value;
 
                 return cell.innerText;
