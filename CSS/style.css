@@ -40,6 +40,17 @@ th {
     background-color: #f4f4f4;
 }
 
+.dots {
+    font-size: 30px;
+    text-align: center;
+    height: 40px; /* keeps rows even */
+}
+
+table {
+    text-align: center;
+}
+
+
 /* Makes the inputs look like part of the table */
 #lineup-body input {
     border: none;

@@ -83,3 +83,26 @@ window.addEventListener("DOMContentLoaded", () => {
     populateLineup("lineup-body-ht");
     populateLineup("lineup-body-at");
 });
+
+let ballCount = 0;
+let strikeCount = 0;
+
+function render() {
+    document.getElementById("balls").textContent = "●".repeat(ballCount);
+    document.getElementById("strikes").textContent = "●".repeat(strikeCount);
+}
+
+function addBall() {
+    if (ballCount < 3) ballCount++;
+    render();
+}
+
+function addStrike() {
+    if (strikeCount < 2) strikeCount++;
+    render();
+}
+
+function addFoul() {
+    if (strikeCount < 2) strikeCount++;
+    render();
+}
