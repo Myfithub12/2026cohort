@@ -97,12 +97,23 @@
         <th>WHIP</th>
     </tr>
 </table>
-
-<button onclick="Scorecard.exportScorecardToTxt()">Export to Notepad</button>
-<button onclick="Scorecard.loadTeams()">Load MLB Teams</button>
-<button onclick="Scorecard.loadStandings()">Load Standings</button>
-<button onclick="Scorecard.loadSchedule('2024-05-01')">Load Schedule</button>
-<button onclick="Scorecard.loadPlayerStats(12345)">Load Player Stats</button>
+<table>
+    <tr>
+        <td><button onclick="Scorecard.exportScorecardToTxt()">Export to Notepad</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="Scorecard.loadTeams()">Load MLB Teams</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="Scorecard.loadStandings()">Load Standings</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="Scorecard.loadSchedule('2024-05-01')">Load Schedule</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="Scorecard.loadPlayerStats(12345)">Load Player Stats</button></td>
+    </tr>
+</table>
     </div>
 </body>
 </html>
