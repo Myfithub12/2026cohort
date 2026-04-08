@@ -10,7 +10,8 @@
     <script defer src="/js/main.js"></script>
     <script defer src="/js/batting.js"></script>
     <script defer src="/js/pitching.js"></script>
-<script defer src="/js/export.js"></script>
+    <script defer src="/js/scorecard.js"></script>
+    <script defer src="/js/export.js"></script>
 </head>
 <body>
     <div class="scorecard-container">
@@ -98,7 +99,10 @@
 </table>
 
 <button onclick="Scorecard.exportScorecardToTxt()">Export to Notepad</button>
-
+<button onclick="Scorecard.loadTeams()">Load MLB Teams</button>
+<button onclick="Scorecard.loadStandings()">Load Standings</button>
+<button onclick="Scorecard.loadSchedule('2024-05-01')">Load Schedule</button>
+<button onclick="Scorecard.loadPlayerStats(12345)">Load Player Stats</button>
     </div>
 </body>
 </html>
