@@ -1,10 +1,11 @@
 const MLBApi = (() => {
 
-    const BASE_URL = "https://publicapi.io/mlb-records-and-stats-api";
+    const BASE_URL = "https://app.balldontlie.io/api/v1/mlb";
+    const API_KEY = "660f9614-491d-46bd-9bbf-9ebe5350cc80";
 
     async function fetchMLB(endpoint = "") {
         try {
-            const response = await fetch(`${BASE_URL}${endpoint}`, {
+            const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -21,9 +22,6 @@ const MLBApi = (() => {
         }
     }
 
-    // -------------------------
-    // TEAMS
-    // -------------------------
     async function getTeams() {
         return await fetchMLB("/teams");
     }
@@ -32,36 +30,51 @@ const MLBApi = (() => {
         return await fetchMLB(`/teams/${teamId}/roster`);
     }
 
-    // -------------------------
-    // NEW: PLAYER STATS
-    // -------------------------
     async function getPlayerStats(playerId) {
         return await fetchMLB(`/players/${playerId}/stats`);
     }
 
-    // -------------------------
-    // NEW: GAME SCHEDULE
-    // -------------------------
     async function getGameSchedule(date = "") {
-        // Example: /schedule?date=2024-05-01
-        const query = date ? `?date=${date}` : "";
-        return await fetchMLB(`/schedule${query}`);
+        const query = date ? `&date=${date}` : "";
+        return await fetchMLB(`/games${query}`);
     }
 
-    // -------------------------
-    // NEW: STANDINGS
-    // -------------------------
     async function getStandings() {
         return await fetchMLB("/standings");
     }
 
+    async function getMiLBTeams(level = "aaa") {
+        return await fetchMLB(`/milb/${level}/teams`);
+    }
+
+    async function getMiLBRoster(level, teamId) {
+        return await fetchMLB(`/milb/${level}/teams/${teamId}/roster`);
+    }
+
+    async function getMiLBStandings(level = "aaa") {
+        return await fetchMLB(`/milb/${level}/standings`);
+    }
+
+    async function getMiLBSchedule(level = "aaa", date = "") {
+        const query = date ? `&date=${date}` : "";
+        return await fetchMLB(`/milb/${level}/games${query}`);
+    }
+
     return {
         fetchMLB,
+
+        // MLB
         getTeams,
         getRoster,
         getPlayerStats,
         getGameSchedule,
-        getStandings
+        getStandings,
+
+        // MiLB
+        getMiLBTeams,
+        getMiLBRoster,
+        getMiLBStandings,
+        getMiLBSchedule
     };
 
 })();

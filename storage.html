@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Manager</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body { padding: 20px; font-family: Arial; }
+        .item { padding: 10px; border-bottom: 1px solid #ccc; }
+        .key { font-weight: bold; }
+        button { margin-left: 10px; }
+    </style>
+
+    <script src="/js/LocalStore.js"></script>
+    <script src="/js/storage-page.js" defer></script>
+</head>
+<body>
+
+    <h1><a href="index.html">Home</a> → Storage Manager</h1>
+
+    <button id="clearAll">Clear All Storage</button>
+
+    <h2>Stored Items</h2>
+    <div id="storageList"></div>
+
+</body>
+</html>
