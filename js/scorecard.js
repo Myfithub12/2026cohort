@@ -12,8 +12,8 @@ const Scorecard = {
 
     saveToLocalStorage() {
         const data = {
-            homeTeam: document.querySelector('input[title="Home Team"]').value,
-            awayTeam: document.querySelector('input[title="Away Team"]').value,
+            homeTeam: document.querySelector('input[title="Home Team"]')?.value || "",
+            awayTeam: document.querySelector('input[title="Away Team"]')?.value || "",
             homeLineup: Scorecard.getLineup("lineup-body-ht"),
             awayLineup: Scorecard.getLineup("lineup-body-at"),
             ballsHome: window.ballsHomeCount || 0,
@@ -22,19 +22,17 @@ const Scorecard = {
             strikesAway: window.strikesAwayCount || 0
         };
 
-        // Save using your existing save() method
         this.save(data);
-
         console.log("Scorecard saved to local storage");
+        return data;
     },
 
     saveAndExport() {
-        this.saveToLocalStorage();
-        this.exportScorecardToTxt();
+        const data = this.saveToLocalStorage();
+        this.exportScorecardToTxt(data);
     },
 
-    exportScorecardToTxt() {
-        const data = this.load();
+    exportScorecardToTxt(data) {
         if (!data) {
             alert("No scorecard data found.");
             return;
@@ -47,7 +45,10 @@ const Scorecard = {
         const a = document.createElement("a");
         a.href = url;
         a.download = "scorecard.txt";
+
+        document.body.appendChild(a);   // required for Chrome
         a.click();
+        document.body.removeChild(a);
 
         URL.revokeObjectURL(url);
     },
