@@ -10,6 +10,29 @@ const Scorecard = {
         return raw ? JSON.parse(raw) : null;
     },
 
+    saveToLocalStorage() {
+        const data = {
+            homeTeam: document.querySelector('input[title="Home Team"]').value,
+            awayTeam: document.querySelector('input[title="Away Team"]').value,
+            homeLineup: Scorecard.getLineup("lineup-body-ht"),
+            awayLineup: Scorecard.getLineup("lineup-body-at"),
+            ballsHome: window.ballsHomeCount || 0,
+            strikesHome: window.strikesHomeCount || 0,
+            ballsAway: window.ballsAwayCount || 0,
+            strikesAway: window.strikesAwayCount || 0
+        };
+
+        // Save using your existing save() method
+        this.save(data);
+
+        console.log("Scorecard saved to local storage");
+    },
+
+    saveAndExport() {
+        this.saveToLocalStorage();
+        this.exportScorecardToTxt();
+    },
+
     exportScorecardToTxt() {
         const data = this.load();
         if (!data) {

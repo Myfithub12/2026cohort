@@ -1,8 +1,3 @@
-/* ============================================================
-   SCOREBOARD BALL / STRIKE / FOUL LOGIC (GLOBAL FUNCTIONS)
-   These MUST remain global so HTML buttons can call them.
-============================================================ */
-
 function addBall(team = "home") {
     const id = team === "home" ? "balls-home" : "balls-away";
     document.getElementById(id).textContent += "●";
@@ -22,10 +17,6 @@ function addFoul(team = "home") {
         document.getElementById(id).textContent += "●";
     }
 }
-
-/* ============================================================
-   PITCHING TRACKER MODULE
-============================================================ */
 
 const PitchingTracker = (() => {
 
